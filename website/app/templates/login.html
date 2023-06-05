@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css') }}">
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-flex">
+                        <div class="flex-grow-1 bg-login-image" style="background-image: url('/static/assets/img/machineregister/machinelogin.jpg');"></div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Welcome Back!</h4>
+                            </div>
+                            <form action="{{ url_for('auth_routes.login') }}" method="POST" class="user">
+                                {{ form.csrf_token }}
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="{{ form.email_address.id }}" name="{{ form.email_address.name }}" placeholder="Email Address" required>
+                                    {% for error in form.email_address.errors %}
+                                        <small class="error-message">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user" id="{{ form.password.id }}" name="{{ form.password.name }}" placeholder="Password" required>
+                                    {% for error in form.password.errors %}
+                                        <small class="error-message">{{ error }}</small>
+                                    {% endfor %}
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
+                                <hr>
+                            </form>
+                            <div class="text-center mt-4">
+                                <a class="small" href="{{ url_for('auth_routes.forget_password') }}">Forgot Password?</a>
+                            </div>
+                            <div class="text-center mt-2">
+                                <a class="small" href="{{ url_for('auth_routes.signup') }}">Create an Account!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bs-init.js') }}"></script>
+    <script src="{{ url_for('static', filename='/assets/js/theme.js') }}"></script>
+
+{% endblock %}

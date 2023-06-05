@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block head %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css') }}">
+    <style>
+        .error-message {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <body class="bg-gradient-primary">
+        <div class="container">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-5 d-none d-lg-flex">
+                            <div class="flex-grow-1 bg-register-image" style="background-image: url('/static/assets/img/machineregister/istockphoto-531694179-612x612.jpg');"></div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h4 class="text-dark mb-4">Create an Account!</h4>
+                                </div>
+                                <form action="{{ url_for('auth_routes.signup') }}" method="POST" class="user">
+                                    {{ form.csrf_token }}
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.first_name.id }}" name="{{ form.first_name.name }}" placeholder="First Name" required>
+                                            {% for error in form.first_name.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.last_name.id }}" name="{{ form.last_name.name }}" placeholder="Last Name" required>
+                                            {% for error in form.last_name.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control form-control-user" id="{{ form.phone_number.id }}" name="{{ form.phone_number.name }}" placeholder="Phone Number" required>
+                                            {% for error in form.phone_number.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control form-control-user" id="{{ form.email_address.id }}" name="{{ form.email_address.name }}" placeholder="Email Address" required>
+                                            {% for error in form.email_address.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="{{ form.password.id }}" name="{{ form.password.name }}" placeholder="Password" required>
+                                        {% for error in form.password.errors %}
+                                            <small class="error-message">{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="{{ form.confirm.id }}" name="{{ form.confirm.name }}" placeholder="Confirm Password" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="{{ form.street_address.id }}" name="{{ form.street_address.name }}" placeholder="Street Address" required>
+                                        {% for error in form.street_address.errors %}
+                                            <small class="error-message">{{ error }}</small>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.city.id }}" name="{{ form.city.name }}" placeholder="City" required>
+                                            {% for error in form.city.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.state.id }}" name="{{ form.state.name }}" placeholder="State" required>
+                                            {% for error in form.state.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.zip_code.id }}" name="{{ form.zip_code.name }}" placeholder="Zip Code" required>
+                                            {% for error in form.zip_code.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control form-control-user" id="{{ form.country.id }}" name="{{ form.country.name }}" placeholder="Country" required>
+                                            {% for error in form.country.errors %}
+                                                <small class="error-message">{{ error }}</small>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-user btn-block" type="submit">Register Account</button>
+                                </form>
+
+                                <div class="text-center mt-4">
+                                    <a class="small" href="{{ url_for('auth_routes.forget_password') }}">Forgot Password?</a>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <a class="small" href="{{ url_for('auth_routes.login') }}">Already have an account? Login!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/js/bs-init.js') }}"></script>
+        <script src="{{ url_for('static', filename='/assets/js/theme.js') }}"></script>
+    </body>
+{% endblock %}

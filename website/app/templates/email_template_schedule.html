@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Schedule</title>
+</head>
+<body>
+    <h1>Maintenance Schedule</h1>
+    <p>Dear {{ recipient }},</p>
+    <p>You have received a maintenance schedule for {{ machine.machine_name }} with serial number {{ machine.machine_serial_number}}:</p>
+    <ul>
+        <li><strong>Technician Name:</strong> {{ schedule.technician_name }}</li>
+        <li><strong>Schedule Tasks:</strong> {{schedule.schedule_tasks}}</li>
+        <li><strong>Schedule Date:</strong> {{ schedule.schedule_date }}</li>
+        <li><strong>Addtional Notes:</strong> {{ schedule.notes }}</li>
+        <li><strong>Schedule Status:</strong> {{ schedule.status }}</li>
+        <!-- Include more notification details as needed -->
+    </ul>
+    <p>Please take appropriate action as necessary.</p>
+    <p>Thank you.</p>
+</body>
+</html>

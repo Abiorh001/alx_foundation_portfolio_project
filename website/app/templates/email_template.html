@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Maintenance Notification</title>
+</head>
+<body>
+    <h1>Maintenance Notification</h1>
+    <p>Dear {{ recipient }},</p>
+    <p>You have received a maintenance notification for {{ machine.machine_name }} with serial number {{ machine.machine_serial_number}}:</p>
+    <ul>
+        <li><strong>Description:</strong> {{ notification.description }}</li>
+        <li><strong>Status:</strong> {{ notification.status }}</li>
+        <li><strong>Notification Date:</strong> {{ notification.notification_datetime }}</li>
+        <!-- Include more notification details as needed -->
+    </ul>
+    <p>Please take appropriate action as necessary.</p>
+    <p>Thank you.</p>
+</body>
+</html>
