@@ -13,14 +13,14 @@ class Config:
     # Access the environment variables using os.getenv()
     # SECRET_KEY = os.getenv("SECRET_KEY")
     # SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
-    SECRET_KEY="ace7b6339c5795d426862caab230f020"
+    SECRET_KEY=""
 
-    SQLALCHEMY_DATABASE_URI="mysql+pymysql://root:Lucifer_001@localhost:3306/malzahratechdb"
+    SQLALCHEMY_DATABASE_URI=""
 
 #creating my config for email sender
-MAIL_SERVER = 'smtp.gmail.com'
+MAIL_SERVER = ""
 MAIL_PORT = 587  
 MAIL_USE_TLS = True 
-MAIL_USERNAME = 'abiolaadedayo1993@gmail.com'
-MAIL_PASSWORD = 'etkazqurxvtqouak'
+MAIL_USERNAME = 
+MAIL_PASSWORD = 
 
